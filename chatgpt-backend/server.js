@@ -13,7 +13,7 @@ app.use(express.json());
 
 //Route to handle POST requests from frontend
 app.post("/api/chatgpt", async (req, res) => { //Create a route to handle POST requests from the frontend (the visible bit) to the backend (the hidden bit) 
-  const prompt = "explain the answer to all my questions like i'm a junior programmer learning to code then explain again more briefly like I'm 5 years old."; //Prompt to start the conversation - personalised
+  const prompt = "explain the answer to all my questions like i'm a junior programmer learning to code then explain again more briefly like I'm 5 years old. please limit responses to 500 characters maximum, including spaces."; //Prompt to start the conversation - personalised
   const message = prompt + req.body.message; //User message to send to OpenAI
   const apiKey = "sk-proj-qjdfEVnUUjOIoLxXA1YkT3BlbkFJvZZWqBH2n7iijswi1GRk"; //My OpenAI API key
   const apiUrl = "https://api.openai.com/v1/chat/completions"; //Endpoint to send the message to OpenAI (chatGPT)
