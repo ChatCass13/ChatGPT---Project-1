@@ -1,12 +1,25 @@
 //script.js
 
-//Function to send user message to backend server
-async function sendMessage() {
+document.addEventListener("DOMContentLoaded", function() {
+  const sendButton = document.getElementById("send-button"); // Where I get the send button element by its ID (send-button) and store it in a variable called sendButton
+  const userInput = document.getElementById("user-input"); // Where I get the user input element by its ID (user-input) and store it in a variable called userInput
+
+  sendButton.addEventListener("click", sendMessage);// Attach click event listener to the send button
+
+  userInput.addEventListener("keypress", function(event) {// Attach keypress event listener to the input field
+    if (event.key === "Enter") { // Check if the key pressed is Enter
+      sendMessage(); // Call the sendMessage function - get some answers from the backend! 
+    }
+  });
+});
+
+
+async function sendMessage() { //Function to send user message to backend server
   const userInput = document.getElementById("user-input").value.trim(); //Get the user input from the input field by its ID (user-input) and store it in a variable called userInput 
   if (!userInput) 
     return; //Prevent sending empty messages
   
-  const url = "http://localhost:3000/api/chatgpt"; //Replace with your server URL
+  const url = "http://localhost:3000/api/chatgpt"; //Where I want to send the message to (the hidden bit) using this URL
 
   try {
     const response = await fetch(url, { //Send a POST request to the backend server (the hidden bit)
@@ -24,13 +37,15 @@ async function sendMessage() {
     const data = await response.json(); //Get the response data from the server
     const chatGptResponse = data.message;
 
-    //Display ChatGPT response
-    appendMessage("chatGPT", chatGptResponse); //Display the response from ChatGPT in the chat container
-  } catch (error) { //If there's an error -- 
-    console.error("Error:", error); //Then log the error message to the console
-    //Handle error scenario (e.g., display error message to user)
+      // Display ChatGPT response
+      appendMessage("chatGPT", chatGptResponse);
+
+      // Clear the input field after sending the message
+      document.getElementById("user-input").value = '';
+    } catch (error) {
+      console.error("Error:", error);
+    }
   }
-}
 
 //Function to display messages in the chat container
 function appendMessage(sender, message) { //Function to display messages in the chat container with a sender and message in that order
@@ -40,15 +55,3 @@ function appendMessage(sender, message) { //Function to display messages in the 
   messageElem.innerHTML = `<p>${message}</p>`; //Add the message to the message element as a paragraph element with the message content inside it 
   chatContainer.appendChild(messageElem); //Add the message element to the chat container to display the message in the chat container 
 }
-
-//Attach event listener to send button
-const sendButton = document.getElementById("send-button"); //Get the send button element from the HTML file (the visible bit) by its ID (send-button) and store it in a variable called sendButton 
-sendButton.addEventListener("click", sendMessage); //Add an event listener to the send button that listens for a click event and calls the sendMessage function when the button is clicked
-
-//Attach event listener to input field for Enter key
-const inputField = document.getElementById("input-field"); //Get the input field element by its ID (input-field) and store it in a variable called "inputField"
-inputField.addEventListener("keydown", function(event) {
-    if (event.key === "Enter") { //Check if the Enter key was pressed
-        sendMessage(); //Call the sendMessage function
-    }
-});

@@ -1,14 +1,97 @@
 body {
-    background-color: paleturquoise;
+    font-family: 'Big Caslon', 'Book Antiqua', Palatino, serif;
+    background-color: #ded7c8
+    color: #9b716b
+    margin: 10;
+    padding: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 100vh
 }
-
-h1 {
-    color: red;
-    font-size: 24px;
-}
-
-.container {
+#app {
     width: 100%;
-    max-width: 12000px;
-    margin: 0 auto;
+    max-width: 1200px;
+    background-color: rgb(240, 216, 181);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.282);
+    padding: 60px;
+    margin: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #9b716b */
 }
+
+#user-input {
+    width: 100%;
+    padding: 10px;
+    font-family: 'Big Caslon', 'Book Antiqua', Palatino, serif;
+    font-size: 12px;
+    border: 3px solid #9b716b6d;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    outline: none;
+  }
+
+    #user-input:focus {
+        border: 3px solid #9b716b;
+    }
+
+    #user-input::placeholder {
+        color: #9b716b;
+    }
+    
+#send-button {
+     width: 20%;
+     padding: 10px;
+     font-family: 'Big Caslon', 'Book Antiqua', Palatino, serif;
+     font-size: 12px;
+     color: #f0ebd7;
+     background-color: #7ba0c0;
+     border: none;
+     border-radius: 4px;
+     margin-bottom: 10px;
+     cursor: pointer;
+     transition: background-color 0.3s;
+}
+#send-button:hover {
+    background-color: #345e8b;
+  }
+  
+#chat-container {
+    margin-top: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 10px; /* Padding to avoid content hiding behind the scrollbar */
+  }
+  .message {
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    max-width: 80%;
+    clear: both;
+  }  
+  .user-message {
+    background-color: #7ba0c06e;
+    color: #fff;
+    float: center;
+    }
+
+.message.chatGPT {
+    background-color: #e9ecef;
+    color: #333;
+    align-self: flex-start;
+    text-align: left;
+    margin-right: auto;
+    }
+    .message {
+        transition: background-color 0.3s, transform 0.3s;
+      }
+      .message:hover {
+        transform: scale(1.02);
+      }
