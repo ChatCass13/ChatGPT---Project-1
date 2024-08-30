@@ -1,13 +1,13 @@
 body {
     font-family: 'Big Caslon', 'Book Antiqua', Palatino, serif;
-    background-color: #ded7c8
-    color: #9b716b
-    margin: 10;
-    padding: 10;
+    background-color: #ded7c8;
+    color: #9b716b;
+    margin: 10px;
+    padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center; 
-    height: 100vh
+    height: 100vh;
 }
 #app {
     width: 100%;
@@ -67,7 +67,6 @@ body {
     margin-top: 20px;
     max-height: 300px;
     overflow-y: auto;
-    padding-right: 10px; /* Padding to avoid content hiding behind the scrollbar */
   }
   .message {
     padding: 10px;
@@ -77,13 +76,13 @@ body {
     clear: both;
   }  
   .user-message {
-    background-color: #7ba0c06e;
+    background-color: #9caa92;
     color: #fff;
     float: center;
     }
 
 .message.chatGPT {
-    background-color: #e9ecef;
+    background-color: #9caa92;
     color: #333;
     align-self: flex-start;
     text-align: left;
