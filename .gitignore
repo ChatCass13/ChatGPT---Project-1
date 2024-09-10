@@ -1,8 +1,6 @@
 # Ignore macOS .DS_Store file
 .DS_Store
 
-# Ignore your API keys file
-api_keys.txt
 
 # Optional: Ignore other sensitive files
 # .env
