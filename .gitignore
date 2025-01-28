@@ -1,5 +1,6 @@
 # Ignore macOS .DS_Store file
 .DS_Store
+.vscode
 
 
 # Optional: Ignore other sensitive files

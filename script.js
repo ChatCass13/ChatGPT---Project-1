@@ -18,7 +18,7 @@ async function sendMessage() { // Function to send user message to backend serve
   const userInputElement = document.getElementById("user-input");
   const userInput = userInputElement.value.trim(); // Get the user input from the input field by its ID (user-input) and store it in a variable called userInput 
 
-  if (!userInput) return; // Prevent sending empty messages
+  if (!userInput) return; // Prevent sending empty messages but dont worry as there's usually nothing going on anyway
 
   // Save the current question to session storage
   sessionStorage.setItem('lastQuestion', userInput);
@@ -31,8 +31,8 @@ async function sendMessage() { // Function to send user message to backend serve
   const url = "http://localhost:3000/api/chatgpt"; // Where I want to send the message to (the hidden bit) using this URL
 
   try {
-    const response = await fetch(url, { // Send a POST request to the backend server (the hidden bit)
-      method: "POST", // POST method is used to send data to the server so it can be processed
+    const response = await fetch(url, { // Send a request to the backend server (the hidden bit)
+      method: "POST", // POST method is used to send data to the server so it can be processed 
       headers: {
         "Content-Type": "application/json" // Send and receive data in JSON format (already defined in the backend)
       },
@@ -40,7 +40,7 @@ async function sendMessage() { // Function to send user message to backend serve
     });
 
     if (!response.ok) { // If the response is not ok --
-      throw new Error("Network response was not ok"); // Then show an error message
+      throw new Error("Network response was not ok"); // -- Then show an error message
     }
 
     const data = await response.json(); // Get the response data from the server
